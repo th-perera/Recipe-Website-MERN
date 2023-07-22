@@ -12,7 +12,7 @@ app.use(cors());
 app.use("/auth", userRouter)
 
 mongoose.connect(
-    "mongodb+srv://thperera:Jb1Wp0q3pbUZNhKB@recipe-database.vts9o6z.mongodb.net/recipe-database?retryWrites=true&w=majority"
+    "mongodb+srv://thperera:Jb1Wp0q3pbUZNhKB@recipe-database.vts9o6z.mongodb.net/recipe-database?retryWrites=true&w=majority" //---
 );
 
 app.listen(3001, () => console.log("SERVER STARTED"));
