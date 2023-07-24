@@ -32,7 +32,7 @@ export default function Home() {
     };
 
     fetchRecipes();
-    fetchSavedRecipes();
+    if (cookies.access_token) fetchSavedRecipes();
   }, []);
 
   const saveRecipe = async (recipeId) => {
