@@ -2,17 +2,19 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import { userRouter } from "./routes/users.js"
+import { userRouter } from "./routes/users.js";
+import { recipesRouter } from "./routes/recipes.js";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.use("/auth", userRouter)
+app.use("/auth", userRouter);
+app.use("/recipes", recipesRouter);
 
 mongoose.connect(
-    "mongodb+srv://thperera:Jb1Wp0q3pbUZNhKB@recipe-database.vts9o6z.mongodb.net/recipe-database?retryWrites=true&w=majority" //---
+  "mongodb+srv://thperera:Jb1Wp0q3pbUZNhKB@recipe-database.vts9o6z.mongodb.net/recipe-database?retryWrites=true&w=majority" //---
 );
 
 app.listen(3001, () => console.log("SERVER STARTED"));
