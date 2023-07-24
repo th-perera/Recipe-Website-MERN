@@ -1,6 +1,7 @@
 import express from "express";
 import { recipeModel } from "../models/Recipes.js";
 import { userModel } from "../models/Users.js";
+import { verifyToken } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.get("/", async (req, res) => {
     res.json(error);
   }
 });
-router.post("/", async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const recipe = new recipeModel(req.body);
 
   try {
@@ -23,7 +24,7 @@ router.post("/", async (req, res) => {
   }
 });
 //save
-router.put("/", async (req, res) => {
+router.put("/", verifyToken, async (req, res) => {
   try {
     const { userId, recipeId } = req.body;
     const recipe = await recipeModel.findById(recipeId);
