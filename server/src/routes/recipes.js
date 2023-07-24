@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 import { recipeModel } from "../models/Recipes.js";
 import { userModel } from "../models/Users.js";
 
