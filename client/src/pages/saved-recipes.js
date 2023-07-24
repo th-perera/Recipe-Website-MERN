@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID.js";
+import { useCookies } from "react-cookie";
 
 export default function SavedRecipes() {
+  const [cookies, _] = useCookies(["access_token"]);
   const [savedRecipes, setSavedRecipes] = useState([]);
   const userId = useGetUserID();
 
@@ -19,7 +21,7 @@ export default function SavedRecipes() {
       }
     };
 
-    fetchSavedRecipes();
+    if (cookies.access_token) fetchSavedRecipes();
   }, []);
 
   return (
